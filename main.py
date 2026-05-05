@@ -6,9 +6,13 @@ app = Flask(__name__)
 
 DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1500100111571751024/fd3czVzGvYqk4kr697pzkAg5avsqQexfqZZaqrjvlXrLjGtl7irCQ_4qynqbrnqeva5k"
 
+MENTION_USERS = [531729236491239424]
+
 def send_discord_alert(user_id, message):
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    mentions = " ".join([f"<@{uid}>" for uid in MENTION_USERS])
     payload = {
+        "content": mentions,
         "embeds": [
             {
                 "title": "📩 카카오 채널 새 메시지",
