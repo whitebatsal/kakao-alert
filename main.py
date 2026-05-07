@@ -38,11 +38,17 @@ def skill():
 
     send_discord_alert(user_id, message)
 
-    # 카카오 오픈빌더 필수 응답 형식 (고객에게 메시지 미전송)
+    # 카카오 오픈빌더 필수 응답 형식 (고객에게 빈 텍스트 전송)
     return jsonify({
         "version": "2.0",
         "template": {
-            "outputs": []
+            "outputs": [
+                {
+                    "simpleText": {
+                        "text": " "
+                    }
+                }
+            ]
         }
     })
 
